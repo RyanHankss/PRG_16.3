@@ -5,26 +5,28 @@ class Time(object):
     attributes: hour, minute, second
     """
 
+
+t1 = Time()
+t1.hour = 11
+t1.minute = 18
+t1.second = 20
+
+t2 = Time()
+t2.hour = 13
+t2.minute = 30
+t2.second = 20
+
+
 def increment(time, seconds):
-    hour = seconds/(60 * 60)
-    minute = seconds/60
-    seconds =  seconds % (60 * 60)
+    time.hour = seconds/(60 * 60)
+    time.minute = seconds/60
+    time.second = seconds % (60 * 60)
     if time.hour > 23:
         time.hour = 0
-    if time.minute > 60
+    if time.minute > 60:
         time.hour += 1
-    if time.second > 60
+    if time.second > 60:
         time.minute += 1
-    
-    
-
-def increment(time, second):
-    time.second += second
-    time.minute += time.second//60
-    time.hour += time.minute//60
-    time.second %= 60
-    time.minute %= 60
-    time.hour %= 24
 
 
-print increment()
+print increment(t1, 0)

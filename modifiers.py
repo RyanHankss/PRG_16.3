@@ -1,32 +1,41 @@
 class Time(object):
 
     """
-    Represents the time of day.
+    The time of day.
     attributes: hour, minute, second
     """
 
 
-t1 = Time()
-t1.hour = 11
-t1.minute = 18
-t1.second = 20
-
-t2 = Time()
-t2.hour = 13
-t2.minute = 30
-t2.second = 20
+def time_int(time):
+    seconds = (time.hour * 60 * 60) + (time.minute * 60) + time.second
+    return seconds
 
 
 def increment(time, seconds):
-    time.hour = seconds/(60 * 60)
-    time.minute = seconds/60
-    time.second = seconds % (60 * 60)
-    if time.hour > 23:
-        time.hour = 0
-    if time.minute > 60:
-        time.hour += 1
-    if time.second > 60:
-        time.minute += 1
+    seconds += time_int(time)
+    return seconds
 
 
-print increment(t1, 0)
+def print_this(t):
+    print('{}.{}.{}'.format(t.hour, t.minute, t.second))
+
+
+def int_time(seconds):
+    tt = Time()
+    tt.hour = seconds/ (60 * 60)
+    secs = seconds % (60 * 60)
+    tt.minute = secs / 60
+    tt.second = secs % 60
+    return tt
+
+start = Time()
+start.hour = 11
+start.minute = 58
+start.second = 11
+
+
+print_this(start)
+
+end = increment(start, 1572)
+incr_time = int_time(end)
+print_this(incr_time)
